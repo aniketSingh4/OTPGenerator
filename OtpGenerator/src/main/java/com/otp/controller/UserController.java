@@ -4,6 +4,7 @@ import com.otp.model.User;
 import com.otp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,5 +23,12 @@ public class UserController {
         } else {
             return ResponseEntity.badRequest().body("Registration failed. Please try again.");
         }
+    }
+    
+    @GetMapping("/login")
+    public String login(Model model)
+    {
+    	model.addAttribute("message", "Hey there!");
+    	return "otp_verification";
     }
 }
